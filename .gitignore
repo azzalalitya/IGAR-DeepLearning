@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data besar (kalau mau, biar repo nggak gede)
+# data/VADER_labeled.csv
+# models/model_cnn_terbaik.h5data/VADER_labeled.zip 
+data/VADER_labeled.csv 
+data/VADER_labeled.csv 
