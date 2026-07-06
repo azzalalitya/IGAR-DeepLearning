@@ -8,6 +8,9 @@ import plotly.graph_objects as go
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(BASE_DIR, "..", "data", "VADER_labeled.csv")
+MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "model_cnn_terbaik.h5")
+TOKENIZER_PATH = os.path.join(BASE_DIR, "..", "models", "tokenizer.pickle")
+ENCODER_PATH = os.path.join(BASE_DIR, "..", "models", "encoder.pickle")
 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -465,10 +468,10 @@ def load_data_and_models():
             review_col = df.columns[1] if len(df.columns) > 1 else df.columns[0]
     
     # Load model dan tokenizer
-    model = load_model('../models/model_cnn_terbaik.h5')
-    with open('../models/tokenizer.pickle', 'rb') as f:
+    model = load_model(MODEL_PATH)
+    with open(TOKENIZER_PATH, 'rb') as f:
         tokenizer = pickle.load(f)
-    with open('../models/encoder.pickle', 'rb') as f:
+    with open(ENCODER_PATH, 'rb') as f:
         encoder = pickle.load(f)
         
     return df, app_col, review_col, model, tokenizer, encoder
