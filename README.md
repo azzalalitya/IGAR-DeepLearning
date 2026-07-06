@@ -39,50 +39,26 @@ Aplikasi layanan publik pemerintah Indonesia seringkali menerima ulasan beragam 
 
 ---
 
-## Arsitektur Sistem
-┌─────────────┐
-│    Input    │  ← Dataset ulasan Google Play Store (CSV)
-└──────┬──────┘
-▼
-┌─────────────────────────┐
-│  Preprocessing &        │  ← Text cleaning: lowercase, remove URL,
-│  Transformation         │    remove mention, remove special characters,
-│                         │    tokenization, padding sequences
-└──────┬──────────────────┘
-▼
-┌─────────────────────────┐
-│     Data Splitting      │  ← Train 80% | Validation 10% | Test 10%
-└──────┬──────────────────┘
-▼
-┌─────────────────────────┐     ┌─────────────────────────┐
-│  Klasifikasi Sentimen   │     │  Klasifikasi Sentimen   │
-│  Metode 1: 1D-CNN       │     │  Metode 2: LSTM         │
-│                         │     │                         │
-│  • Filter: 128, 64, 32  │     │  • Units: 128 LSTM      │
-│  • Kernel: 3, 4, 5      │     │  • Dense: 64            │
-│  • Pooling: Global Max  │     │  • Recurrent Dropout: 0.2│
-│  • Dropout: 0.5         │     │  • Return Sequences: False│
-│  • Epoch: ~3-5 menit    │     │  • Epoch: ~8-12 menit   │
-└──────┬──────────────────┘     └───────────┬─────────────┘
-│                                     │
-└─────────────┬───────────────────────┘
-▼
-┌─────────────────────────┐
-│    Evaluasi & Komparasi │  ← Membandingkan akurasi, presisi,
-│                         │    recall, dan F1-Score kedua metode
-└──────┬──────────────────┘
-▼
-┌─────────────────────────┐
-│        Output           │  ← Prediksi sentimen: Positif / Netral / Negatif
-└──────┬──────────────────┘
-▼
-┌─────────────────────────┐
-│   GUI Website           │  ← Streamlit Dashboard interaktif
-│   (Streamlit Cloud)     │    • Eksplorasi Data
-└─────────────────────────┘    • Komparasi Model
-• Ranking Layanan
-• Uji Coba Real-Time
 
+## 🏗️ Arsitektur Sistem
+
+```mermaid
+graph TD
+    A[Input: Dataset CSV Ulasan Play Store] --> B[Preprocessing & Transformasi]
+    B --> C[Split Data: 80% Train, 10% Validasi, 10% Test]
+    
+    C --> D[Metode 1: 1D-CNN]
+    C --> E[Metode 2: LSTM]
+    
+    D --> F[Komparasi Model]
+    E --> F
+    
+    F --> G[Output: Prediksi Sentimen]
+    G --> H[Positif / Netral / Negatif]
+    
+    H --> I[Dashboard Streamlit]
+    I --> J[Ranking Layanan & Uji Coba Real-Time]
+```
 ---
 
 ## Preprocessing Pipeline
@@ -164,31 +140,26 @@ Input (50) → Embedding → LSTM(128) → Dropout(0.2)
 ## Struktur Repository
 IGAR-DeepLearning/
 ├── .streamlit/
-│   └── config.toml              # Konfigurasi tema & layout
-│
+│ └── config.toml # Konfigurasi tema & layout Streamlit
 ├── app/
-│   ├── app.py                   # Entry point Streamlit
-│   ├── utils.py                 # Fungsi preprocessing & prediksi
-│   └── components.py            # Komponen UI (glass cards, tables)
-│
+│ ├── app.py # Entry point aplikasi Streamlit
+│ ├── utils.py # Fungsi preprocessing & prediksi
+│ └── components.py # Komponen UI (glass cards, tabel)
 ├── models/
-│   ├── model_cnn_terbaik.h5     # Model CNN (15.7 MB)
-│   ├── tokenizer.pickle         # Tokenizer fit
-│   └── encoder.pickle           # Label encoder
-│
+│ ├── model_cnn_terbaik.h5 # Model CNN terbaik (15.7 MB)
+│ ├── tokenizer.pickle # Tokenizer hasil training
+│ └── encoder.pickle # Label encoder
 ├── data/
-│   └── VADER_labeled.csv        # Dataset (110 MB)
-│
+│ └── VADER_labeled.csv # Dataset (110 MB) – tidak diupload ke GitHub
 ├── notebooks/
-│   ├── 01_data_preprocessing.ipynb
-│   ├── 02_vader_labeling.ipynb
-│   ├── 03_model_cnn.ipynb
-│   ├── 04_model_lstm.ipynb
-│   └── 05_evaluation.ipynb
-│
-├── requirements.txt             # Dependencies
-├── README.md                    # Dokumentasi ini
-└── .gitignore
+│ ├── 01_data_preprocessing.ipynb
+│ ├── 02_vader_labeling.ipynb
+│ ├── 03_model_cnn.ipynb
+│ ├── 04_model_lstm.ipynb
+│ └── 05_evaluation.ipynb
+├── requirements.txt # Dependencies Python
+├── .gitignore # File yang diabaikan Git
+└── README.md # Dokumentasi ini
  
 ---
 
