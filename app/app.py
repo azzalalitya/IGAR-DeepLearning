@@ -5,6 +5,10 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "..", "data", "VADER_labeled.csv")
+
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
@@ -426,7 +430,7 @@ st.markdown("""
 @st.cache_resource
 def load_data_and_models():
     # Path relatif dari app/app.py ke folder lain
-    df = pd.read_csv('../data/VADER_labeled.csv', nrows=50000)
+    df = pd.read_csv(DATA_PATH, nrows=50000)
     
     # Auto-detect kolom aplikasi
     possible_app_cols = ['app', 'source', 'app_name', 'application', 'App', 'Source']
