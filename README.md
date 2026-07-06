@@ -6,7 +6,7 @@
 
 ## Live Demo
 
-[🔗 https://igar-kelompok11.streamlit.app](https://igar-kelompok11.streamlit.app)
+[🔗 https://igar-kelompok11.streamlit.app]([https://igar-kelompok11.streamlit.app](https://igar-deeplearning-uaskelompok11.streamlit.app/))
 
 ---
 
