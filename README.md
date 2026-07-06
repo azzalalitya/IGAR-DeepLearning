@@ -1,6 +1,4 @@
-# IGAR — Indonesian Government Applications Review
-
-**Kelompok 11 | Sistem Informasi UAS Deep Learning 2026**
+# IGAR (Indonesian Government Applications Review) Classification Comparable Deep Learning
 
 &gt; Analisis sentimen ulasan layanan publik Indonesia menggunakan Deep Learning berbasis CNN dan LSTM.
 
@@ -215,8 +213,10 @@ Push ke GitHub
 Buka share.streamlit.io
 Connect repository → pilih app/app.py
 Deploy
+```
+---
 
-#Teknologi
+##Teknologi
 Kategori: Stack
 Framework: Streamlit
 DeepLearning: TensorFlow / Keras
@@ -224,7 +224,7 @@ Visualisasi: Plotly
 DataProcessing: Pandas, NumPy
 Font: Playfair Display, Inter
 
-#Tim Pengembang
+##Tim Pengembang
 Kelompok 11 — Sistem Informasi
 Tahun Akademik 2025/2026
 1. Azza Almira Lalitya
