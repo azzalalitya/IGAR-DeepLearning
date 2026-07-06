@@ -13,8 +13,7 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Data besar (kalau mau, biar repo nggak gede)
+# Data besar (di-comment supaya TIDAK di-ignore, karena mau di-track via Git LFS)
 # data/VADER_labeled.csv
-# models/model_cnn_terbaik.h5data/VADER_labeled.zip 
-data/VADER_labeled.csv 
-data/VADER_labeled.csv 
+# data/VADER_labeled.zip
+# models/model_cnn_terbaik.h5
